@@ -10,6 +10,9 @@ const routes: Array<RouteRecordRaw> = [
         path: "/",
         alias: "/index",
         component: () => import("../views"),
+        meta:{
+            title:'首页'
+        }
     },
     {
         path: "/",
@@ -18,10 +21,16 @@ const routes: Array<RouteRecordRaw> = [
             {
                 path: "client",
                 component: () => import("../views/Client"),
+                meta:{
+                    title:'客户端'
+                }
             },
             {
                 path: "server",
                 component: () => import("../views/Server"),
+                meta:{
+                    title:'服务端'
+                }
             },
         ],
     },

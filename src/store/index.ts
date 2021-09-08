@@ -7,6 +7,9 @@ import {createStore as _createStore, Store, useStore as baseUseStore} from "vuex
 export interface State {
     client: string[];
     server: string[];
+    description: string;
+    keywords: string;
+    author: string
 }
 
 export interface AsyncDataParam {
@@ -26,6 +29,9 @@ export function createStore() {
         state: {
             client: ["vue3", "vue-router", "vuex"],
             server: ["vite", "express", "serialize-javascript"],
+            keywords: '',
+            description: '',
+            author: ''
         },
         mutations: {
             setClient(state, data) {
@@ -34,9 +40,29 @@ export function createStore() {
             setServer(state, data) {
                 state.server = data;
             },
+            setKeywords(state, data) {
+                state.keywords = data
+            },
+            setDescription(state, data) {
+                state.description = data
+            },
+            setAuthor(state, data) {
+                state.author = data
+            }
         },
         actions: {
-
+            ASYNC_KEYWORDS({commit}, data: string) {
+                return new Promise(((resolve, reject) => {
+                    commit('setKeywords', data)
+                    resolve(true)
+                }))
+            },
+            ASYNC_DESCRIPTION({commit}, data: string) {
+                return new Promise(((resolve, reject) => {
+                    commit('setDescription', data)
+                    resolve(true)
+                }))
+            }
         }
     });
     // 替换state

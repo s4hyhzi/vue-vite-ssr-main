@@ -2,6 +2,11 @@ import {defineComponent} from "vue";
 import {AsyncDataParam, key, useStore} from "../store";
 
 export default defineComponent({
+    asyncData({store}:AsyncDataParam){
+        store.commit('setKeywords','我的测试')
+        store.commit('setDescription','测试')
+        store.commit('setAuthor','小煜')
+    },
     setup(props, context) {
         const store = useStore(key)
         console.log('加载...服务')

@@ -16,7 +16,7 @@ async function createServer(root = process.cwd(), isProd = process.env.NODE_ENV 
         );
     } else {
         // 开发
-        let { createServer: _createServer } = require("vite");
+        let {createServer: _createServer} = require("vite");
         vite = await _createServer({
             root,
             server: {
@@ -36,7 +36,7 @@ async function createServer(root = process.cwd(), isProd = process.env.NODE_ENV 
     const manifest = isProd ? require("./dist/client/ssr-manifest.json") : {};
 
     app.use("*", async (req, res) => {
-        const { originalUrl: url } = req;
+        const {originalUrl: url} = req;
         console.log(`[server] ${new Date()} - ${url}`);
         try {
             let template, render;
@@ -50,12 +50,17 @@ async function createServer(root = process.cwd(), isProd = process.env.NODE_ENV 
                 template = await vite.transformIndexHtml(url, template);
                 render = (await vite.ssrLoadModule("/src/entry-server.js")).render;
             }
+            let {html, preloadLinks, stateStr, title, state} = await render(url, manifest);
 
-            let { html, preloadLinks, stateStr } = await render(url, manifest);
+            console.log(html, preloadLinks, stateStr, 'server.js 55')
             // 替换标记
             html = template
-                .replace(`<!--title-->`,`我的世界`)
+                .replace(`<!--title-->`, title)
                 .replace(`<!-- app-preload-links -->`, preloadLinks)
+                .replace(
+                    '<!--app-meta-->',
+                    `<meta name="description" content="${state.description}"/><meta name="keywords" content="${state.keywords}"/><meta name="author" content="${state.author}"/>`
+                )
                 .replace(
                     `<!-- app-script -->`,
                     `<script type="application/javascript">window.__IS_FROM_SSR__=true;window.__INITIAL_STATE__=${stateStr}</script>`
@@ -63,19 +68,21 @@ async function createServer(root = process.cwd(), isProd = process.env.NODE_ENV 
                 // 用于客户端标记服务器渲染
                 .replace(`<!--app-html-->`, html);
             // 响应
-            res.status(200).set({ "Content-Type": "text/html" }).end(html);
+            res.status(200).set({"Content-Type": "text/html"}).end(html);
         } catch (e) {
             isProd || vite.ssrFixStacktrace(e);
-            console.error(`[error]`, e.stack);
+            console.error(
+                `[error]`
+                , e.stack);
             res.status(500).end(e.stack);
         }
     });
 
-    return { app };
+    return {app};
 }
 
 // 创建服务
-createServer().then(({ app }) => {
+createServer().then(({app}) => {
     app.listen(5000, () => {
         console.log("[server] http://localhost:5000");
     });
