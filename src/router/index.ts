@@ -1,11 +1,15 @@
 import {createRouter as _createRouter} from "./router";
 import {RouteRecordNormalized} from "vue-router";
+import setSEO from "../utils/setSEO";
 
 export function Router(store: any) {
     const router = _createRouter();
     // 路由拦截器
     router.beforeResolve(async (to, from) => {
-        console.log(store,8)
+        console.log(to.meta.title)
+        // @ts-ignore
+        //判断是否在web环境如果是执行setSEO
+        store.state.webEnv&&setSEO({author: "", description: "", keywords: "", title: to.meta.title})
         let toMatchedComponents = getMatchedComponents(to.matched);
         let fromMatchedComponents = getMatchedComponents(from.matched);
         // 优化过滤

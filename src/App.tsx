@@ -1,8 +1,13 @@
-import {defineComponent} from "vue";
+import {defineComponent, onMounted} from "vue";
 import Test from "./views/Test";
+import {key, useStore} from "./store";
 
 export default defineComponent({
     setup(props, context) {
+        const store = useStore(key)
+        onMounted(() => {
+            store.state.webEnv = true
+        })
         return {};
     },
     components: {

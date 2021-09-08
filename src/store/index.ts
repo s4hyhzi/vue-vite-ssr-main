@@ -9,7 +9,8 @@ export interface State {
     server: string[];
     description: string;
     keywords: string;
-    author: string
+    author: string;
+    webEnv: boolean
 }
 
 export interface AsyncDataParam {
@@ -31,7 +32,8 @@ export function createStore() {
             server: ["vite", "express", "serialize-javascript"],
             keywords: '',
             description: '',
-            author: ''
+            author: '',
+            webEnv: false
         },
         mutations: {
             setClient(state, data) {

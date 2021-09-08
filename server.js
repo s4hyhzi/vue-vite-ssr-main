@@ -55,7 +55,7 @@ async function createServer(root = process.cwd(), isProd = process.env.NODE_ENV 
             console.log(html, preloadLinks, stateStr, 'server.js 55')
             // 替换标记
             html = template
-                .replace(`<!--title-->`, title)
+                .replace(`<!--title-->`, `${title} - 后台管理`)
                 .replace(`<!-- app-preload-links -->`, preloadLinks)
                 .replace(
                     '<!--app-meta-->',
@@ -83,7 +83,7 @@ async function createServer(root = process.cwd(), isProd = process.env.NODE_ENV 
 
 // 创建服务
 createServer().then(({app}) => {
-    app.listen(5000, () => {
-        console.log("[server] http://localhost:5000");
+    app.listen(8000, () => {
+        console.log("[server] http://localhost:8000");
     });
 });
