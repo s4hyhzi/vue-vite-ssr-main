@@ -24,8 +24,8 @@ export function useStore(key: InjectionKey<Store<State>>) {
 export function createStore() {
     const store = _createStore<State>({
         state: {
-            client: [],
-            server: [],
+            client: ["vue3", "vue-router", "vuex"],
+            server: ["vite", "express", "serialize-javascript"],
         },
         mutations: {
             setClient(state, data) {
@@ -36,22 +36,7 @@ export function createStore() {
             },
         },
         actions: {
-            AYSNC_CLIENT({commit}) {
-                return new Promise((resolve, reject) => {
-                    // setTimeout(() => {
-                    commit("setClient", ["vue3", "vue-router", "vuex"]);
-                    resolve(true);
-                    // }, 20);
-                });
-            },
-            ASYNC_SERVER({commit}) {
-                return new Promise((resolve, reject) => {
-                    // setTimeout(() => {
-                    commit("setServer", ["vite", "express", "serialize-javascript"]);
-                    resolve(true);
-                    // }, 2000);
-                });
-            },
+
         }
     });
     // 替换state

@@ -1,5 +1,5 @@
 import {defineComponent} from "vue";
-import './Test.css'
+import '../stylus/Test.css'
 
 export default defineComponent({
     render() {

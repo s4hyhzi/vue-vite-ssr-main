@@ -17,11 +17,11 @@ const routes: Array<RouteRecordRaw> = [
         children: [
             {
                 path: "client",
-                component: () => import("../views/client"),
+                component: () => import("../views/Client"),
             },
             {
                 path: "server",
-                component: () => import("../views/server"),
+                component: () => import("../views/Server"),
             },
         ],
     },

@@ -3,11 +3,6 @@ import {Store, useStore} from "vuex";
 import {AsyncDataParam, key, State} from "../store";
 
 export default defineComponent({
-    asyncData({store}: AsyncDataParam) {
-        console.log("[AYSNC_CLIENT]");
-
-        return store.dispatch("AYSNC_CLIENT");
-    },
     setup(props, context) {
         const {client} = useStore<State>(key).state;
         console.log('加载...客户端')

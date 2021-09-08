@@ -54,6 +54,7 @@ async function createServer(root = process.cwd(), isProd = process.env.NODE_ENV 
             let { html, preloadLinks, stateStr } = await render(url, manifest);
             // 替换标记
             html = template
+                .replace(`<!--title-->`,`我的世界`)
                 .replace(`<!-- app-preload-links -->`, preloadLinks)
                 .replace(
                     `<!-- app-script -->`,

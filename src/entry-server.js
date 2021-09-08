@@ -16,7 +16,7 @@ export async function render(url, manifest){
     const html = await renderToString(app, ctx);
 
     const preloadLinks = renderPreloadLinks(ctx.modules, manifest);
-
+    console.log(serialize(store.state),19)
     return { html, preloadLinks, stateStr: serialize(store.state) }
 }
 
