@@ -6,7 +6,7 @@ interface SEO {
 }
 
 export default function setSEO({title, author, description, keywords}: SEO) {
-    title ? window.document.title = title : ''
+    title ? window.document.title = `${title} - 后台管理` : ''
     // @ts-ignore
     keywords ? window.document.querySelector('meta[name="keywords"]').setAttribute('content', keywords) : ''
     // @ts-ignore
