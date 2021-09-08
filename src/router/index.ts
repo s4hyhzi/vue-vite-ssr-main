@@ -9,7 +9,7 @@ export function Router(store: any) {
         console.log(to.meta.title)
         // @ts-ignore
         //判断是否在web环境如果是执行setSEO
-        store.state.webEnv&&setSEO({author: "", description: "", keywords: "", title: to.meta.title})
+        store.state.webEnv && setSEO({title: to.meta.title})
         let toMatchedComponents = getMatchedComponents(to.matched);
         let fromMatchedComponents = getMatchedComponents(from.matched);
         // 优化过滤
