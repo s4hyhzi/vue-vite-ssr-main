@@ -6,6 +6,7 @@ export default defineComponent({
     setup(props, context) {
         const store = useStore(key)
         onMounted(() => {
+            console.log('App.tsx')
             store.state.webEnv = true
         })
         return {};

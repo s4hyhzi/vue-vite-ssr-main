@@ -11,7 +11,10 @@ const routes: Array<RouteRecordRaw> = [
         alias: "/index",
         component: () => import("../views"),
         meta:{
-            title:'首页'
+            title:'首页',
+            keywords:'我的首页',
+            author:'小煜',
+            description:'首页'
         }
     },
     {
@@ -22,14 +25,20 @@ const routes: Array<RouteRecordRaw> = [
                 path: "client",
                 component: () => import("../views/Client"),
                 meta:{
-                    title:'客户端'
+                    title:'客户端',
+                    keywords:'我的客户端',
+                    author:'小煜',
+                    description:'客户端'
                 }
             },
             {
                 path: "server",
                 component: () => import("../views/Server"),
                 meta:{
-                    title:'服务端'
+                    title:'服务端',
+                    keywords:'我的服务端',
+                    author:'小煜',
+                    description:'服务端'
                 }
             },
         ],

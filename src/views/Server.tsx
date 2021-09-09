@@ -1,11 +1,15 @@
 import {defineComponent} from "vue";
 import {AsyncDataParam, key, useStore} from "../store";
+import setSEO from "../utils/setSEO";
 
 export default defineComponent({
-    asyncData({store}:AsyncDataParam){
-        store.commit('setKeywords','我的测试')
-        store.commit('setDescription','测试')
-        store.commit('setAuthor','小煜')
+    asyncData({store}: AsyncDataParam) {
+        setSEO({
+            title: '文章',
+            keywords: '我的测试',
+            description: '测试',
+            author: '小煜'
+        }, store)
     },
     setup(props, context) {
         const store = useStore(key)

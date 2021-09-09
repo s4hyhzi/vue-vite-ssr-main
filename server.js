@@ -50,16 +50,16 @@ async function createServer(root = process.cwd(), isProd = process.env.NODE_ENV 
                 template = await vite.transformIndexHtml(url, template);
                 render = (await vite.ssrLoadModule("/src/entry-server.js")).render;
             }
-            let {html, preloadLinks, stateStr, title, state} = await render(url, manifest);
+            let {html, preloadLinks, stateStr, meta} = await render(url, manifest);
 
             console.log(html, preloadLinks, stateStr, 'server.js 55')
             // 替换标记
             html = template
-                .replace(`<!--title-->`, `${title} - 后台管理`)
+                .replace(`<!--title-->`, `${meta.title} - 后台管理`)
                 .replace(`<!-- app-preload-links -->`, preloadLinks)
                 .replace(
                     '<!--app-meta-->',
-                    `<meta name="description" content="${state.description}"/><meta name="keywords" content="${state.keywords}"/><meta name="author" content="${state.author}"/>`
+                    `<meta name="description" content="${meta.description}"/><meta name="keywords" content="${meta.keywords}"/><meta name="author" content="${meta.author}"/>`
                 )
                 .replace(
                     `<!-- app-script -->`,

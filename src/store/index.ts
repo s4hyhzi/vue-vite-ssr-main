@@ -7,6 +7,7 @@ import {createStore as _createStore, Store, useStore as baseUseStore} from "vuex
 export interface State {
     client: string[];
     server: string[];
+    title: string;
     description: string;
     keywords: string;
     author: string;
@@ -33,7 +34,8 @@ export function createStore() {
             keywords: '',
             description: '',
             author: '',
-            webEnv: false
+            webEnv: false,
+            title: ''
         },
         mutations: {
             setClient(state, data) {

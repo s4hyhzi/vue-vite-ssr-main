@@ -21,8 +21,12 @@ export async function render(url, manifest) {
         html,
         preloadLinks,
         stateStr: serialize(store.state),
-        title: router.currentRoute.value.meta['title'],
-        state: store.state
+        meta: {
+            title: store.state.title ? store.state.title : router.currentRoute.value.meta['title'],
+            keywords: store.state.keywords ? store.state.keywords : router.currentRoute.value.meta['keywords'],
+            description: store.state.description ? store.state.description : router.currentRoute.value.meta['description'],
+            author: store.state.author ? store.state.author : router.currentRoute.value.meta['author'],
+        }
     }
 }
 
