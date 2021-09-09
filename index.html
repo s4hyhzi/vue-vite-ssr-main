@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8"/>
     <link rel="icon" href="/favicon.ico"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title><!--title--></title>
+    <!--app-meta-->
+    <!-- app-preload-links -->
     <style media="screen" type="text/css">
         #appLoading {
             width: 100%;
@@ -16,21 +18,17 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 200px;
-            height: 200px;
             -webkit-transform: translateY(-50%) translateX(-50%);
             transform: translateY(-50%) translateX(-50%);
         }
     </style>
-    <!--app-meta-->
-    <!-- app-preload-links -->
 </head>
 
 <body>
-<!--<div id="appLoading">-->
-<!--    <img src="" alt="加载中...">-->
-<!--</div>-->
-<div id="app"><!--app-html--></div>
+<div id="appLoading">
+    <img src="./public/loading.gif" alt="加载中...">
+</div>
+<div id="app" style="display: none"><!--app-html--></div>
 <!-- app-script -->
 <script type="module" src="/src/entry-client.ts"></script>
 </body>

@@ -8,6 +8,14 @@ export default defineComponent({
         onMounted(() => {
             console.log('App.tsx')
             store.state.webEnv = true
+            try {
+                setTimeout(function() {
+                    // @ts-ignore
+                    document.body.removeChild(document.getElementById('appLoading'))
+                    // @ts-ignore
+                    document.getElementById('app').style.display = 'block';
+                }, 500)
+            } catch (e) {}
         })
         return {};
     },
