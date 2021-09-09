@@ -1,8 +1,4 @@
-# 详细介绍移步至
-
-掘金:[vite2+vue3+vue-router搭建vue-ssr](https://juejin.cn/post/6961751475219496997)
-
-# Vue 3 + Typescript + Vite
+# Vue 3 + Typescript + Vite2 + SSR + SEO
 
 This template should help get you started developing with Vue 3 and Typescript in Vite.
 
