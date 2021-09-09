@@ -1,6 +1,7 @@
-import {defineComponent} from "vue";
+import {defineComponent, reactive} from "vue";
 import {AsyncDataParam, key, useStore} from "../store";
 import setSEO from "../utils/setSEO";
+import {NButton} from "naive-ui";
 
 export default defineComponent({
     asyncData({store}: AsyncDataParam) {
@@ -13,6 +14,9 @@ export default defineComponent({
     },
     setup(props, context) {
         const store = useStore(key)
+        const state = reactive({
+            list: [1, 2, 3, 4]
+        })
         console.log('加载...服务')
 
         const setKey = () => {
@@ -25,7 +29,8 @@ export default defineComponent({
         return {
             // ...toRefs()
             setKey,
-            store
+            store,
+            state
         };
     },
     render() {
@@ -33,8 +38,13 @@ export default defineComponent({
             <>
                 <h3>服务端</h3>
                 server：{this.store.state.server.toString()}
-                <button onClick={this.setKey}>改变
-                </button>
+                <NButton onClick={this.setKey}>改变
+                </NButton>
+                {
+                    this.state.list.map((item, index) => (
+                        <p>{item}</p>
+                    ))
+                }
             </>
         )
     }
