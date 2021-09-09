@@ -32,7 +32,7 @@ export default defineComponent({
         return (
             <>
                 <h3>服务端</h3>
-                server：{this.store.state.server}
+                server：{this.store.state.server.toString()}
                 <button onClick={this.setKey}>改变
                 </button>
             </>
