@@ -6,7 +6,7 @@ export default defineComponent({
     render() {
         return (
             <div id='test'>
-                <NGradientText type="info"> 测试 </NGradientText>
+                <span> 测试 </span>
             </div>
         )
     }

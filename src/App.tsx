@@ -7,7 +7,7 @@ export default defineComponent({
         const store = useStore(key)
         onMounted(() => {
             console.log('App.tsx')
-            store.state.webEnv = true
+            // store.state.webEnv = true
             try {
                 setTimeout(function() {
                     // @ts-ignore
@@ -20,7 +20,7 @@ export default defineComponent({
         return {};
     },
     components: {
-        Test
+        Test,
     },
     render() {
         return (
