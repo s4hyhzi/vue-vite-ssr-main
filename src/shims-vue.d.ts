@@ -6,3 +6,9 @@ declare module '*.vue' {
 interface Window {
   __INITIAL_STATE__: any;
 }
+
+declare module "*.less" {
+  const less: any;
+  // @ts-ignore
+  export default less;
+}

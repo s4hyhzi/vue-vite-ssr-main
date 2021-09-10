@@ -2,12 +2,20 @@ import {defineComponent, onMounted} from "vue";
 import Test from "./views/Test";
 import {key, useStore} from "./store";
 
+const TestApp=defineComponent({
+    render(){
+        return (
+            <span>testApp</span>
+        )
+    }
+})
+
 export default defineComponent({
     setup(props, context) {
         const store = useStore(key)
         onMounted(() => {
             console.log('App.tsx')
-            // store.state.webEnv = true
+            store.state.webEnv = true
             try {
                 setTimeout(function() {
                     // @ts-ignore
@@ -26,6 +34,7 @@ export default defineComponent({
         return (
             <>
                 <Test/>
+                <TestApp/>
                 <router-link to="/">首页→</router-link>
                 | <router-link to="/client">客户端→</router-link> |
                 <router-link to="/server">服务端→</router-link>
@@ -34,3 +43,4 @@ export default defineComponent({
         )
     }
 })
+

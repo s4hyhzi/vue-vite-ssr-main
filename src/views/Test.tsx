@@ -1,13 +1,13 @@
 import {defineComponent} from "vue";
 import '../styles/Test.less'
-import {NGradientText} from "naive-ui";
+import {Alert} from "ant-design-vue";
 
 export default defineComponent({
     render() {
         return (
-            <div id='test'>
-                <span> 测试 </span>
-            </div>
+            <>
+                <Alert message={'测试'} type="success"/>
+            </>
         )
     }
 })
