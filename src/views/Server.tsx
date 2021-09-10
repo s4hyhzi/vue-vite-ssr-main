@@ -2,7 +2,7 @@ import {defineComponent, reactive} from "vue";
 import {AsyncDataParam, key, useStore} from "../store";
 import setSEO from "../utils/setSEO";
 import {Button} from "ant-design-vue";
-import '../styles/Server.less'
+import classes from '../styles/Server.module.less'
 
 export default defineComponent({
     asyncData({store}: AsyncDataParam) {
@@ -37,8 +37,8 @@ export default defineComponent({
         return (
             <>
                 <h3>服务端</h3>
-                <span class={'span'}>server：{this.store.state.server.toString()}</span>
-                <Button onClick={this.setKey}>改变
+                <span class={classes.span}>server：{this.store.state.server.toString()}</span>
+                <Button class={classes.button} onClick={this.setKey}>改变
                 </Button>
                 {
                     this.state.list.map((item, index) => (
