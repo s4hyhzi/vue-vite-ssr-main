@@ -1,11 +1,13 @@
 import {defineComponent} from "vue";
+import '../styles/Test.less'
+import {NGradientText} from "naive-ui";
 
 export default defineComponent({
     render() {
         return (
-            <>
-                <p>测试</p>
-            </>
+            <div id='test'>
+                <NGradientText type="info"> 测试 </NGradientText>
+            </div>
         )
     }
 })
