@@ -27,7 +27,6 @@ export default defineComponent({
         }
 
         return {
-            // ...toRefs()
             setKey,
             store,
             state
@@ -38,7 +37,7 @@ export default defineComponent({
             <>
                 <h3>服务端</h3>
                 server：{this.store.state.server.toString()}
-                <NButton onClick={this.setKey}>改变
+                <NButton type={'info'} onClick={this.setKey}>改变
                 </NButton>
                 {
                     this.state.list.map((item, index) => (

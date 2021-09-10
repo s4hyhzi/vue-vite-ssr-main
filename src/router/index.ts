@@ -1,6 +1,6 @@
 import {createRouter as _createRouter} from "./router";
 import {RouteRecordNormalized} from "vue-router";
-import setSEO, {setMetaSEO} from "../utils/setSEO";
+import setSEO from "../utils/setSEO";
 
 export function Router(store: any) {
     const router = _createRouter();
@@ -9,8 +9,8 @@ export function Router(store: any) {
         // console.log(to.meta.title)
         // @ts-ignore
         //判断是否在web环境如果是执行setSEO
-        store.state.webEnv && setSEO(to.meta,store)
-        console.log(store.state, 13)
+        store.state.webEnv && setSEO(to.meta, store)
+        // console.log(store.state, 13)
         let toMatchedComponents = getMatchedComponents(to.matched);
         let fromMatchedComponents = getMatchedComponents(from.matched);
         // 优化过滤
@@ -35,7 +35,7 @@ export function Router(store: any) {
     });
 
     router.beforeEach((to, from, next) => {
-        console.log('跳转')
+        // console.log('跳转')
         next()
     })
 
