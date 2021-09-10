@@ -52,7 +52,7 @@ async function createServer(root = process.cwd(), isProd = process.env.NODE_ENV 
             }
             let {html, preloadLinks, stateStr, meta} = await render(url, manifest);
 
-            console.log(html, preloadLinks, stateStr, 'server.js 55')
+            // console.log(html, preloadLinks, stateStr, 'server.js 55')
             // 替换标记
             html = template
                 .replace(`<!--title-->`, `${meta.title} - 后台管理`)
